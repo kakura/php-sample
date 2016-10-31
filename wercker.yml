@@ -1,0 +1,19 @@
+box: magyarjeti/php@0.1.0
+build:
+  steps:
+    - script:
+        name: deploy source
+        code: |
+          php ./phpinfo.php
+    - shutakakura/github-pullrequest:
+        user: "kakura"
+        token: ${GITHUB_TOKEN}
+        title: "deploy success!!"
+        from: "develop"
+
+deploy:
+  steps:
+    - script:
+        name: deploy source
+        code: |
+          cd
